@@ -1,16 +1,14 @@
 const express = require('express')
 const cors = require('cors')
-const pool = require('./db')
+const pool = require('./server/db')
 const app = express()
 const PORT = 5000
 
+// middleware
 app.use(cors())
 app.use(express.json())
 
-app.listen(PORT, () => {
-  console.log('Server has started on port ' + PORT)
-})
-
+// Routes
 // create a transaction
 app.post('/transactions', async (req, res) => {
   try {
@@ -23,4 +21,33 @@ app.post('/transactions', async (req, res) => {
   } catch (error) {
     console.log(error.message)
   }
+})
+
+// get all transactions
+app.get('/transactions', async (req, res) => {
+  try {
+    const allTransactions = await pool.query('SELECT * FROM transactions')
+    res.json(allTransactions.rows)
+  } catch (err) {
+    console.error(err)
+  }
+})
+
+// delete a transaction
+app.delete('/transactions/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+    const transToDelete = await pool.query(
+      'DELETE FROM transactions WHERE trans_id = $1',
+      [id]
+    )
+    res.json('Transaction was deleted:(')
+    console.log('transaction is deleted.')
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+app.listen(PORT, () => {
+  console.log('Server has started on port ' + PORT)
 })
