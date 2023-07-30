@@ -33,6 +33,21 @@ app.get('/transactions', async (req, res) => {
   }
 })
 
+// update a transaction
+app.put('/transactions/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+    const { item, price } = req.body
+    const updateTransaction = await pool.query(
+      'UPDATE transactions SET item = $1, price = $2 WHERE trans_id = $3',
+      [item, price, id]
+    )
+    res.json(`Transaction ${id} was updated`)
+  } catch (err) {
+    console.error(err)
+  }
+})
+
 // delete a transaction
 app.delete('/transactions/:id', async (req, res) => {
   try {
