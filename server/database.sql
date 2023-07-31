@@ -2,9 +2,9 @@ CREATE DATABASE budget;
 
 CREATE TABLE transactions(
 trans_id SERIAL PRIMARY KEY,
+transaction_date DATE,
 item VARCHAR,
-price DOUBLE PRECISION,
-record_time DATE
+price DOUBLE PRECISION
 );
 
 CREATE USER test WITH PASSWORD 'password';
