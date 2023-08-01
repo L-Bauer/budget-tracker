@@ -16,6 +16,18 @@ const ListTransactions = () => {
     }
   }
 
+  const deleteTransaction = async (id) => {
+    try {
+      await fetch(`http://localhost:5000/transactions/${id}`, {
+        method: "DELETE"
+      })
+      
+      setTransactions(transactions.filter(transaction => transaction.trans_id !==id))
+    } catch (err) {
+      console.error(err.message)
+    }
+  }
+
   useEffect(() => {
     getTransactions()
   }, [])
@@ -37,9 +49,10 @@ const ListTransactions = () => {
           <tr key={transaction.trans_id}>
             <td>{format(new Date(transaction.transaction_date), 'MM/dd/yyyy')}</td>
             <td>{transaction.item}</td>
-            <td>{transaction.price}</td>
+            <td>$ {transaction.price}</td>
             <td>Edit</td>
-            <td>Delete</td>
+            <td><button className="btn btn-danger" onClick={() => 
+              deleteTransaction(transaction.trans_id)}>Delete</button></td>
           </tr>
         ))}
       </tbody>
