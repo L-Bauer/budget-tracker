@@ -2,6 +2,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 import {format} from 'date-fns';
 
+import EditTransaction from './EditTrans'
+
 const ListTransactions = () => {
   const [transactions, setTransactions] = useState([])
 
@@ -12,7 +14,7 @@ const ListTransactions = () => {
 
       setTransactions(transactionsData)
     } catch (err) {
-      console.error(err)
+      console.error(err.message)
     }
   }
 
@@ -22,7 +24,7 @@ const ListTransactions = () => {
         method: "DELETE"
       })
       
-      setTransactions(transactions.filter(transaction => transaction.trans_id !==id))
+      setTransactions(transactions.filter(transaction => transaction.trans_id !== id))
     } catch (err) {
       console.error(err.message)
     }
@@ -50,9 +52,13 @@ const ListTransactions = () => {
             <td>{format(new Date(transaction.transaction_date), 'MM/dd/yyyy')}</td>
             <td>{transaction.item}</td>
             <td>$ {transaction.price}</td>
-            <td>Edit</td>
-            <td><button className="btn btn-danger" onClick={() => 
-              deleteTransaction(transaction.trans_id)}>Delete</button></td>
+            <td>
+              <EditTransaction transaction={transaction} />
+            </td>
+            <td>
+              <button className="btn btn-danger" onClick={() => 
+                deleteTransaction(transaction.trans_id)}>Delete</button>
+            </td>
           </tr>
         ))}
       </tbody>
