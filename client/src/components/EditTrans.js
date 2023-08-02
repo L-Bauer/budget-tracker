@@ -1,20 +1,20 @@
 import React, { Fragment, useState } from "react";
 
 const EditTransaction = ({ transaction }) => {
-  const [transaction_date, setTransaction_date] = useState(transaction.transaction_date)
   const [item, setItem] = useState(transaction.item)
   const [price, setPrice] = useState(transaction.price)
 
   const updateTransaction = async e => {
     e.preventDefault();
     try {
-      const body = { item, price, transaction_date }
+      const body = { item, price }
       const response = await fetch(`http://localhost:5000/transactions/${transaction.trans_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json"},
       body: JSON.stringify(body)})
 
       console.log(response)
+      window.location.reload();
     } catch (error) {
       console.error(error.message)
     }
@@ -35,7 +35,6 @@ const EditTransaction = ({ transaction }) => {
             </button>
           </div>
           <div className="modal-body">
-            <input type="date" className="form-control" value={transaction_date} onChange={e => setTransaction_date(e.target.value)}/>
             <input type="text" className="form-control" value={item} onChange={e => setItem(e.target.value)}/>
             <input type="number" className="form-control" step="0.01" value={price} onChange={e => setPrice(e.target.value)}/>
           </div>

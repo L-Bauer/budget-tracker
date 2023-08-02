@@ -26,7 +26,7 @@ app.post('/transactions', async (req, res) => {
 // get all transactions
 app.get('/transactions', async (req, res) => {
   try {
-    const allTransactions = await pool.query('SELECT * FROM transactions')
+    const allTransactions = await pool.query('SELECT * FROM transactions ORDER BY trans_id')
     res.json(allTransactions.rows)
   } catch (err) {
     console.error(err)
@@ -37,14 +37,14 @@ app.get('/transactions', async (req, res) => {
 app.put('/transactions/:id', async (req, res) => {
   try {
     const { id } = req.params
-    const { item, price, transaction_date } = req.body
+    const { item, price } = req.body
     const updateTransaction = await pool.query(
-      'UPDATE transactions SET item = $1, price = $2, transaction_date = $3, WHERE trans_id = $4',
-      [item, price, transaction_date, id]
+      'UPDATE transactions SET item = $1, price = $2 WHERE trans_id = $3',
+      [item, price, id]
     )
     res.json(`Transaction ${id} was updated`)
   } catch (err) {
-    console.error(err)
+    console.error(err.message)
   }
 })
 
