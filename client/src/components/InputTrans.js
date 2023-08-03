@@ -1,24 +1,23 @@
-import React, { Fragment, useState } from "react"
+import React, { Fragment, useState } from 'react'
 
 const InputTransaction = () => {
-
-  const [transaction_date, setTransaction_date] = useState("")
-  const [item, setItem] = useState("")
-  const [price, setPrice] = useState("")
+  const [transaction_date, setTransaction_date] = useState('')
+  const [item, setItem] = useState('')
+  const [price, setPrice] = useState('')
 
   const onSubmitForm = async e => {
     e.preventDefault()
     try {
-      const body = {transaction_date, item, price}
-      await fetch("http://localhost:5000/transactions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json"},
+      const body = { transaction_date, item, price }
+      await fetch('http://localhost:5000/transactions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
       })
-      setTransaction_date("")
-      setItem("")
-      setPrice("")
-      window.location = "/"
+      setTransaction_date('')
+      setItem('')
+      setPrice('')
+      window.location = '/'
     } catch (err) {
       console.error(err.message)
     }

@@ -1,20 +1,21 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState } from 'react'
 
 const EditTransaction = ({ transaction }) => {
   const [item, setItem] = useState(transaction.item)
   const [price, setPrice] = useState(transaction.price)
 
   const updateTransaction = async e => {
-    e.preventDefault();
+    e.preventDefault()
     try {
       const body = { item, price }
       const response = await fetch(`http://localhost:5000/transactions/${transaction.trans_id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json"},
-      body: JSON.stringify(body)})
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      })
 
       console.log(response)
-      window.location.reload();
+      window.location.reload()
     } catch (error) {
       console.error(error.message)
     }
