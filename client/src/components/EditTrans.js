@@ -20,6 +20,11 @@ const EditTransaction = ({ transaction }) => {
     }
   }
 
+  const setBackOriginal = () => {
+    setItem(transaction.item)
+    setPrice(transaction.price)
+  }
+
   return <Fragment>
     <button type="button" className="btn btn-primary" data-toggle="modal" data-target={`#id${transaction.trans_id}`}>
       Edit
@@ -39,7 +44,7 @@ const EditTransaction = ({ transaction }) => {
             <input type="number" className="form-control" step="0.01" value={price} onChange={e => setPrice(e.target.value)}/>
           </div>
           <div className="modal-footer">
-            <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="button" className="btn btn-danger" data-dismiss="modal" onClick={() => setBackOriginal()}>Close</button>
             <button type="button" className="btn btn-warning" onClick={e => updateTransaction(e)}>Save changes</button>
           </div>
         </div>
