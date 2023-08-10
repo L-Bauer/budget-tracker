@@ -12,10 +12,10 @@ app.use(express.json())
 // create a transaction
 app.post('/transactions', async (req, res) => {
   try {
-    const { item, price, record_time } = req.body
+    const { transaction_date, item, price } = req.body
     const newTrans = await pool.query(
-      'INSERT INTO transactions (item, price, record_time) VALUES ($1, $2, $3) RETURNING *',
-      [item, price, record_time]
+      'INSERT INTO transactions (transaction_date, item, price) VALUES ($1, $2, $3) RETURNING *',
+      [transaction_date, item, price]
     )
     res.json(newTrans.rows[0])
   } catch (error) {
@@ -26,7 +26,7 @@ app.post('/transactions', async (req, res) => {
 // get all transactions
 app.get('/transactions', async (req, res) => {
   try {
-    const allTransactions = await pool.query('SELECT * FROM transactions')
+    const allTransactions = await pool.query('SELECT * FROM transactions ORDER BY trans_id')
     res.json(allTransactions.rows)
   } catch (err) {
     console.error(err)
@@ -44,7 +44,7 @@ app.put('/transactions/:id', async (req, res) => {
     )
     res.json(`Transaction ${id} was updated`)
   } catch (err) {
-    console.error(err)
+    console.error(err.message)
   }
 })
 
