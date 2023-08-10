@@ -1,6 +1,5 @@
-
-import React, { Fragment, useEffect, useState } from "react";
-import {format} from 'date-fns';
+import React, { Fragment, useEffect, useState } from 'react'
+import { format } from 'date-fns'
 
 import EditTransaction from './EditTrans'
 
@@ -9,7 +8,7 @@ const ListTransactions = () => {
 
   const getTransactions = async () => {
     try {
-      const response = await fetch("http://localhost:5000/transactions")
+      const response = await fetch('http://localhost:5000/transactions')
       const transactionsData = await response.json()
 
       setTransactions(transactionsData)
@@ -21,9 +20,9 @@ const ListTransactions = () => {
   const deleteTransaction = async (id) => {
     try {
       await fetch(`http://localhost:5000/transactions/${id}`, {
-        method: "DELETE"
+        method: 'DELETE'
       })
-      
+
       setTransactions(transactions.filter(transaction => transaction.trans_id !== id))
     } catch (err) {
       console.error(err.message)
@@ -35,7 +34,7 @@ const ListTransactions = () => {
   }, [])
 
   return <Fragment>
-    {" "}
+    {' '}
     <table className="table table-striped table-hover text-center mt-5">
       <thead>
         <tr>
@@ -56,7 +55,7 @@ const ListTransactions = () => {
               <EditTransaction transaction={transaction} />
             </td>
             <td>
-              <button className="btn btn-danger" onClick={() => 
+              <button className="btn btn-danger" onClick={() =>
                 deleteTransaction(transaction.trans_id)}>Delete</button>
             </td>
           </tr>

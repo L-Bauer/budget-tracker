@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from 'react'
 
-import './App.css';
+import './App.css'
 
 // components
-import InputTransaction from './components/InputTrans';
-import ListTransactions from './components/ListTrans';
+import InputTransaction from './components/InputTrans'
+import ListTransactions from './components/ListTrans'
 
-function App() {
+function App () {
   return (
     <Fragment>
       <div className='container'>
@@ -16,7 +16,7 @@ function App() {
         <ListTransactions />
       </div>
     </Fragment>
-  );
+  )
 }
 
-export default App;
+export default App
