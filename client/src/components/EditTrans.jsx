@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import { Fragment, useState } from 'react'
 
 const EditTransaction = ({ transaction }) => {
   const [item, setItem] = useState(transaction.item)
