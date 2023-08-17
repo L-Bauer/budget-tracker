@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import { Fragment, useState } from 'react'
 
 const InputTransaction = () => {
   const [transaction_date, setTransaction_date] = useState('')

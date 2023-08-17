@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { format } from 'date-fns'
 
 import EditTransaction from './EditTrans'
