@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-08-17T19:20:35.502Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" etag="CQ9LwfXZPIax8BhSPNdi" version="21.6.8" type="github">
+<mxfile host="app.diagrams.net" modified="2023-08-17T19:21:30.228Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" etag="PtLLyvGjUEnIP95ZYLI4" version="21.6.8" type="github">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
     <mxGraphModel dx="1365" dy="750" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
@@ -174,6 +174,12 @@
         </mxCell>
         <mxCell id="Y4PlshZAEA-lC_IyBOVd-67" value="Budget&lt;br&gt;&lt;br&gt;Main Category&lt;br&gt;Subcategory&lt;br&gt;Goal Amount&lt;br&gt;Actual Amount" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="390" y="470" width="120" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Y4PlshZAEA-lC_IyBOVd-68" value="Income&lt;br&gt;&lt;br&gt;Type&lt;br&gt;Amount" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="470" width="120" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Y4PlshZAEA-lC_IyBOVd-69" value="Budget&lt;br&gt;&lt;br&gt;Main Category&lt;br&gt;Subcategory&lt;br&gt;Goal Amount&lt;br&gt;Actual Amount" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="670" y="470" width="120" height="160" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
