@@ -1,20 +1,14 @@
 const express = require('express')
-const cors = require('cors')
-const pool = require('./startup/db')
 const app = express()
-const PORT = 5000
-
-// middleware
-app.use(cors())
-app.use(express.json())
+const pool = require('../startup/db')
 
 // Routes
 // create a transaction
-app.post('/transactions', async (req, res) => {
+app.post('/transaction', async (req, res) => {
   try {
     const { transaction_date, item, price } = req.body
     const newTrans = await pool.query(
-      'INSERT INTO transactions (transaction_date, item, price) VALUES ($1, $2, $3) RETURNING *',
+      'INSERT INTO transaction (transaction_date, item, price) VALUES ($1, $2, $3) RETURNING *',
       [transaction_date, item, price]
     )
     res.json(newTrans.rows[0])
@@ -23,10 +17,10 @@ app.post('/transactions', async (req, res) => {
   }
 })
 
-// get all transactions
-app.get('/transactions', async (req, res) => {
+// get all transaction
+app.get('/transaction', async (req, res) => {
   try {
-    const allTransactions = await pool.query('SELECT * FROM transactions ORDER BY trans_id')
+    const allTransactions = await pool.query('SELECT * FROM transaction ORDER BY trans_id')
     res.json(allTransactions.rows)
   } catch (err) {
     console.error(err)
@@ -34,12 +28,12 @@ app.get('/transactions', async (req, res) => {
 })
 
 // update a transaction
-app.put('/transactions/:id', async (req, res) => {
+app.put('/transaction/:id', async (req, res) => {
   try {
     const { id } = req.params
     const { item, price } = req.body
     const updateTransaction = await pool.query(
-      'UPDATE transactions SET item = $1, price = $2 WHERE trans_id = $3',
+      'UPDATE transaction SET item = $1, price = $2 WHERE trans_id = $3',
       [item, price, id]
     )
     res.json(`Transaction ${id} was updated`)
@@ -49,11 +43,11 @@ app.put('/transactions/:id', async (req, res) => {
 })
 
 // delete a transaction
-app.delete('/transactions/:id', async (req, res) => {
+app.delete('/transaction/:id', async (req, res) => {
   try {
     const { id } = req.params
     const transToDelete = await pool.query(
-      'DELETE FROM transactions WHERE trans_id = $1',
+      'DELETE FROM transaction WHERE trans_id = $1',
       [id]
     )
     res.json('Transaction was deleted:(')
@@ -63,6 +57,4 @@ app.delete('/transactions/:id', async (req, res) => {
   }
 })
 
-app.listen(PORT, () => {
-  console.log('Server has started on port ' + PORT)
-})
+module.exports = app
