@@ -17,4 +17,14 @@ app.post('/', async (req, res) => {
   }
 })
 
+// get all holdings
+app.get('/', async (req, res) => {
+  try {
+    const allHoldings = await pool.query('SELECT * FROM holdings ORDER BY holding_id')
+    res.json(allHoldings.rows)
+  } catch (err) {
+    console.error(err)
+  }
+})
+
 module.exports = app
