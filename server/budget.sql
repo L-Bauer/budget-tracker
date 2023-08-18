@@ -15,8 +15,8 @@ ALTER TABLE budget ADD CONSTRAINT budget_id
 CREATE TABLE category
 (
   category_id SERIAL NOT NULL,
-  category char(256) NOT NULL,
-  sub_category char(256) NOT NULL
+  category varchar(256) UNIQUE NOT NULL,
+  sub_category varchar(256) NOT NULL
 );
 
 ALTER TABLE category ADD CONSTRAINT category_id
@@ -25,7 +25,7 @@ ALTER TABLE category ADD CONSTRAINT category_id
 CREATE TABLE holdings
 (
   holding_id SERIAL NOT NULL,
-  holding char(256) NOT NULL
+  holding varchar(256) UNIQUE NOT NULL
 );
 
 ALTER TABLE holdings ADD CONSTRAINT holding_id
@@ -36,7 +36,7 @@ CREATE TABLE transaction
   transaction_id uuid NOT NULL,
   date date NOT NULL,
   budget_id SERIAL NOT NULL,
-  expense_income char(10) NOT NULL,
+  expense_income varchar(10) NOT NULL,
   amount money NOT NULL
 );
 
