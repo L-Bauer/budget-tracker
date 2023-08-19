@@ -44,4 +44,16 @@ app.post('/', async (req, res) => {
   }
 })
 
+// Get all budget items
+app.get('/', async (req, res) => {
+  try {
+    const allBudgetItems = await pool.query(
+      'SELECT * FROM budget ORDER BY budget_id'
+    )
+    res.json(allBudgetItems.rows)
+  } catch (err) {
+    console.log(err.message)
+  }
+})
+
 module.exports = app
