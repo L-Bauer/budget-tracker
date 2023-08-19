@@ -15,7 +15,7 @@ ALTER TABLE budget ADD CONSTRAINT budget_id
 CREATE TABLE category
 (
   category_id SERIAL NOT NULL,
-  category varchar(256) UNIQUE NOT NULL,
+  category varchar(256) NOT NULL,
   sub_category varchar(256) NOT NULL
 );
 
