@@ -3,7 +3,7 @@ CREATE DATABASE budget;
 CREATE TABLE budget
 (
   budget_id SERIAL NOT NULL,
-  category_id SERIAL NOT NULL,
+  category_id SERIAL UNIQUE NOT NULL,
   holding_id SERIAL,
   min_amount money,
   goal_amount money
