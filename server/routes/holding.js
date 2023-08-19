@@ -2,7 +2,15 @@ const express = require('express')
 const app = express()
 const pool = require('../startup/db')
 
-// Routes
+/*
+Routes
+Table: Holding
+Columns: holding_id(pk), holding
+Description: Holding is the how the a budget item is payed for.
+For example, "Night Out" items are payed for with a cash envelope.
+The holding for the "Night Out" would be cash envelop.
+*/
+
 // create a holding
 app.post('/', async (req, res) => {
   try {
