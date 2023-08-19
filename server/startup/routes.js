@@ -5,6 +5,7 @@ const cors = require('cors')
 // const transactionRouter = require('../routes/transaction')
 const holdingsRouter = require('../routes/holding')
 const categoryRouter = require('../routes/category')
+const budgetRouter = require('../routes/budget')
 
 module.exports = function (app) {
   // middleware
@@ -14,4 +15,5 @@ module.exports = function (app) {
   // app.use('/transaction', transactionRouter)
   app.use('/holdings', holdingsRouter)
   app.use('/category', categoryRouter)
+  app.use('/budget', budgetRouter)
 }
