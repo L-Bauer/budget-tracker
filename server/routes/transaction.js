@@ -4,7 +4,7 @@ const pool = require('../startup/db')
 
 // Routes
 // create a transaction
-app.post('/transaction', async (req, res) => {
+app.post('/', async (req, res) => {
   try {
     const { transaction_date, item, price } = req.body
     const newTrans = await pool.query(
@@ -18,7 +18,7 @@ app.post('/transaction', async (req, res) => {
 })
 
 // get all transaction
-app.get('/transaction', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
     const allTransactions = await pool.query('SELECT * FROM transaction ORDER BY trans_id')
     res.json(allTransactions.rows)
@@ -28,7 +28,7 @@ app.get('/transaction', async (req, res) => {
 })
 
 // update a transaction
-app.put('/transaction/:id', async (req, res) => {
+app.put('/:id', async (req, res) => {
   try {
     const { id } = req.params
     const { item, price } = req.body
@@ -43,7 +43,7 @@ app.put('/transaction/:id', async (req, res) => {
 })
 
 // delete a transaction
-app.delete('/transaction/:id', async (req, res) => {
+app.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params
     const transToDelete = await pool.query(
