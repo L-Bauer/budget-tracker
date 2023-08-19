@@ -12,8 +12,8 @@ app.post('/', async (req, res) => {
       [holding]
     )
     res.json(newHolding.rows[0])
-  } catch (error) {
-    console.log(error)
+  } catch (err) {
+    console.log(err.message)
   }
 })
 
@@ -23,7 +23,7 @@ app.get('/', async (req, res) => {
     const allHoldings = await pool.query('SELECT * FROM holdings ORDER BY holding_id')
     res.json(allHoldings.rows)
   } catch (err) {
-    console.error(err)
+    console.error(err.message)
   }
 })
 
