@@ -3,17 +3,13 @@ import { Fragment } from 'react'
 import './App.css'
 
 // components
-import InputTransaction from './components/InputTrans'
-import ListTransactions from './components/ListTrans'
+import Transaction from './components/transaction/Transaction'
 
 function App() {
   return (
     <Fragment>
       <div className='container'>
-        <InputTransaction />
-      </div>
-      <div className="container">
-        <ListTransactions />
+        <Transaction />
       </div>
     </Fragment>
   )
