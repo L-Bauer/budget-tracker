@@ -13,7 +13,7 @@ module.exports = function (app) {
   app.use(express.json())
 
   // app.use('/transaction', transactionRouter)
-  app.use('/holdings', holdingsRouter)
-  app.use('/category', categoryRouter)
+  app.use('/budget/holdings', holdingsRouter)
+  app.use('/budget/category', categoryRouter)
   app.use('/budget', budgetRouter)
 }
