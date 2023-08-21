@@ -1,6 +1,6 @@
 import { Fragment} from 'react'
 
-const listBudget = () => {
+const ListBudget = () => {
   return (
     <Fragment>
       <h1>Hello Budget</h1>
@@ -8,4 +8,4 @@ const listBudget = () => {
   )
 }
 
-export default listBudget
+export default ListBudget

@@ -6,10 +6,10 @@ import '../../app.css'
 import InputTransaction from './InputTrans'
 import ListTransactions from './ListTrans'
 
-function transaction() {
+function Transaction() {
   return (
     <Fragment>
-      <div className='container'>
+      <div className='container' data-bs-theme="dark">
         <InputTransaction />
       </div>
       <div className="container">
@@ -19,4 +19,4 @@ function transaction() {
   )
 }
 
-export default transaction
+export default Transaction
