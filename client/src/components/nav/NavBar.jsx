@@ -1,7 +1,6 @@
 import React from "react"
 import Container from 'react-bootstrap/Container'
-import { Nav, Navbar, NavLink } from "react-bootstrap"
-import { Link } from "react-router-dom"
+import { Nav, Navbar } from "react-bootstrap"
 
 const TopNavBar = () => {
   return (
@@ -19,6 +18,6 @@ const TopNavBar = () => {
     </Container>
     </Navbar>
   )
-}
+};
   
 export default TopNavBar
