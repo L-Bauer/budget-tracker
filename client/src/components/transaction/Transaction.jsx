@@ -9,7 +9,7 @@ import ListTransactions from './ListTrans'
 function Transaction() {
   return (
     <Fragment>
-      <div className='container' data-bs-theme="dark">
+      <div className='container'>
         <InputTransaction />
       </div>
       <div className="container">
