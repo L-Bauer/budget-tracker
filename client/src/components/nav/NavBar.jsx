@@ -1,6 +1,6 @@
-import React from "react"
+import React from 'react'
 import Container from 'react-bootstrap/Container'
-import { Nav, Navbar } from "react-bootstrap"
+import { Nav, Navbar } from 'react-bootstrap'
 
 const TopNavBar = () => {
   return (
@@ -16,6 +16,6 @@ const TopNavBar = () => {
       </Navbar.Collapse>
     </Navbar>
   )
-};
-  
+}
+
 export default TopNavBar
