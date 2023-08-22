@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import './App.css'
 
@@ -7,9 +7,9 @@ import './App.css'
 import Home from './components/home'
 import Transaction from './components/transaction/Transaction'
 import ListBudget from './components/budget/ListBudget'
-import TopNavBar from './components/nav/NavBar';
+import TopNavBar from './components/nav/NavBar'
 
-function App() {
+function App () {
   return (
       <div className='App'>
         <Router>
