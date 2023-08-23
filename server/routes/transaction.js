@@ -16,20 +16,20 @@ app.post('/', async (req, res) => {
     const cat_id = category_id.rows[0].category_id
 
     // Get the budget_id based on the users selection for the category
-    const { budget } = req.body
-    const budget_id = await pool.query(
+
+    const budgetIdSQL = await pool.query(
       `SELECT budget_id FROM budget
       WHERE category_id=($1)`,
       [cat_id]
     )
-    const budgetId = budget_id.rows[0].budget_id
+    const budgetId = budgetIdSQL.rows[0].budget_id
     console.log(budgetId)
-    // const { transaction_date, budget_id, expense_income, amount } = req.body
-    // const newTrans = await pool.query(
-    //   'INSERT INTO transaction (date, budget_id, expense_income, price) VALUES ($1, $2, $3, $4) RETURNING *',
-    //   [transaction_date, budget_id, expense_income, amount]
-    // )
-    // res.json(newTrans.rows[0])
+    const { date, expense_income, amount } = req.body
+    const newTrans = await pool.query(
+      'INSERT INTO transaction (date, budget_id, expense_income, amount) VALUES ($1, $2, $3, $4) RETURNING *',
+      [date, budgetId, expense_income, amount]
+    )
+    res.json(newTrans.rows[0])
   } catch (error) {
     console.log(error.message)
   }
@@ -38,7 +38,7 @@ app.post('/', async (req, res) => {
 // get all transaction
 app.get('/', async (req, res) => {
   try {
-    const allTransactions = await pool.query('SELECT * FROM transaction ORDER BY trans_id')
+    const allTransactions = await pool.query('SELECT * FROM transaction ORDER BY transaction_id')
     res.json(allTransactions.rows)
   } catch (err) {
     console.error(err)
