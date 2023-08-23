@@ -6,12 +6,30 @@ const pool = require('../startup/db')
 // create a transaction
 app.post('/', async (req, res) => {
   try {
-    const { transaction_date, item, price } = req.body
-    const newTrans = await pool.query(
-      'INSERT INTO transaction (transaction_date, item, price) VALUES ($1, $2, $3) RETURNING *',
-      [transaction_date, item, price]
+    // Get the category_id based on users selection
+    const { category, sub_category } = req.body
+    const category_id = await pool.query(
+      `SELECT category_id FROM category 
+        WHERE category=($1) AND sub_category=($2)`,
+      [category, sub_category]
     )
-    res.json(newTrans.rows[0])
+    const cat_id = category_id.rows[0].category_id
+
+    // Get the budget_id based on the users selection for the category
+    const { budget } = req.body
+    const budget_id = await pool.query(
+      `SELECT budget_id FROM budget
+      WHERE category_id=($1)`,
+      [cat_id]
+    )
+    const budgetId = budget_id.rows[0].budget_id
+    console.log(budgetId)
+    // const { transaction_date, budget_id, expense_income, amount } = req.body
+    // const newTrans = await pool.query(
+    //   'INSERT INTO transaction (date, budget_id, expense_income, price) VALUES ($1, $2, $3, $4) RETURNING *',
+    //   [transaction_date, budget_id, expense_income, amount]
+    // )
+    // res.json(newTrans.rows[0])
   } catch (error) {
     console.log(error.message)
   }
