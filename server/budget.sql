@@ -33,7 +33,7 @@ ALTER TABLE holdings ADD CONSTRAINT holding_id
 
 CREATE TABLE transaction
 (
-  transaction_id uuid NOT NULL,
+  transaction_id SERIAL NOT NULL,
   date date NOT NULL,
   budget_id SERIAL NOT NULL,
   expense_income varchar(10) NOT NULL,
@@ -56,3 +56,7 @@ DROP TABLE holdings;
 DROP TABLE transaction;
 DROP TABLE budget;
 DROP TABLE category;
+
+CREATE USER test WITH PASSWORD 'password';
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO test;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO test;
