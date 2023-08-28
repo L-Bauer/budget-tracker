@@ -6,7 +6,7 @@ import '../../app.css'
 import InputTransaction from './InputTrans'
 import ListTransactions from './ListTrans'
 
-function Transaction() {
+function Transaction () {
   return (
     <Fragment>
       <div className='container'>
